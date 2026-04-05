@@ -7,14 +7,23 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9fafc;
+      background-color: #f9fafc; /* nền sáng nhẹ */
       margin: 0;
       padding: 0;
     }
+    header {
+      background-color: #4CAF50; /* xanh lá đồng bộ */
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
     .container {
       max-width: 800px;
-      margin: auto;
+      margin: 30px auto;
       padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     h1 {
       text-align: center;
@@ -53,15 +62,30 @@
       font-weight: bold;
       text-align: center;
     }
+    footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #555;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <header>
     <h1>Danh sách sản phẩm</h1>
+  </header>
+
+  <div class="container">
     <input type="text" id="search" class="search-box" placeholder="Tìm sản phẩm...">
     <div id="product-list" class="products"></div>
     <p id="error" class="error"></p>
   </div>
+
+  <footer>
+    &copy; 2026 - Trang chính 710
+  </footer>
 
   <script>
     const products = ["Laptop Dell", "iPhone 15", "Samsung Galaxy", "Tai nghe Sony", "Chuột Logitech"];
