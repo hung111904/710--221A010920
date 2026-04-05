@@ -3,122 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <title>Phần Lý thuyết</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafc; /* nền sáng nhẹ */
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #4CAF50; /* xanh lá đồng bộ */
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #333;
+    }
+    pre {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+      color: #444;
+    }
+    footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #555;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Phần Lý thuyết</h1>
+  <header>
+    <h1>Phần Lý thuyết</h1>
+  </header>
 
-  <!-- Câu 1 -->
-  <h2>Câu 1: Sự khác biệt giữa position: absolute và position: relative trong CSS</h2>
-  <p>
-    - <strong>position: relative</strong>: giữ phần tử trong luồng bình thường nhưng cho phép dịch chuyển nhẹ so với vị trí gốc.<br>
-    - <strong>position: absolute</strong>: loại bỏ phần tử khỏi luồng và định vị nó theo phần tử cha gần nhất có thuộc tính position (không phải static).
-  </p>
-  <p>Ví dụ với <strong>relative</strong>:</p>
-  <pre><code>
-&lt;div class="card"&gt;
-  &lt;img src="product.jpg" alt="Sản Phẩm"&gt;
-  &lt;p class="label"&gt;Sản Phẩm&lt;/p&gt;
-&lt;/div&gt;
+  <div class="container">
+    <!-- Câu 1 -->
+    <h2>Câu 1: Sự khác biệt giữa position: absolute và position: relative trong CSS</h2>
+    <p>
+      - <strong>position: relative</strong>: giữ phần tử trong luồng bình thường nhưng cho phép dịch chuyển nhẹ so với vị trí gốc.<br>
+      - <strong>position: absolute</strong>: loại bỏ phần tử khỏi luồng và định vị nó theo phần tử cha gần nhất có thuộc tính position (không phải static).
+    </p>
+    <pre><code>.card { position: relative; }
+.label { position: relative; top: 10px; left: 5px; }</code></pre>
+    <pre><code>.container { position: relative; }
+.btn { position: absolute; bottom: 20px; right: 20px; }</code></pre>
 
-.card { position: relative; }
-.label { position: relative; top: 10px; left: 5px; }
-  </code></pre>
-  <p>Ví dụ với <strong>absolute</strong>:</p>
-  <pre><code>
-&lt;div class="container"&gt;
-  &lt;img src="banner.jpg" alt="Banner"&gt;
-  &lt;button class="btn"&gt;Mua ngay&lt;/button&gt;
-&lt;/div&gt;
+    <!-- Câu 2 -->
+    <h2>Câu 2: Quy trình đăng ký domain và hosting</h2>
+    <p>
+      - Đăng ký domain qua nhà cung cấp (Namecheap, GoDaddy...).<br>
+      - Chọn hosting (GitHub Pages, Netlify cho web tĩnh).<br>
+      - Cấu hình DNS: ánh xạ domain → IP hosting.<br>
+      - Công cụ hỗ trợ: GitHub Pages, Netlify.<br>
+      - Rủi ro bảo mật: nếu không bật HTTPS hoặc cấu hình DNS sai → dễ bị tấn công giả mạo.
+    </p>
 
-.container { position: relative; }
-.btn { position: absolute; bottom: 20px; right: 20px; }
-  </code></pre>
-  <p>Khi deploy website lên hosting: relative giúp layout ổn định hơn, absolute cần kiểm tra bằng media queries để tránh lỗi trên mobile.</p>
-
-  <!-- Câu 2 -->
-  <h2>Câu 2: Quy trình đăng ký domain và hosting</h2>
-  <p>
-    - Đăng ký domain qua nhà cung cấp (Namecheap, GoDaddy...).<br>
-    - Chọn hosting (GitHub Pages, Netlify cho web tĩnh).<br>
-    - Cấu hình DNS: ánh xạ domain → IP hosting.<br>
-    - Công cụ hỗ trợ: GitHub Pages, Netlify.<br>
-    - Rủi ro bảo mật: nếu không bật HTTPS hoặc cấu hình DNS sai → dễ bị tấn công giả mạo.
-  </p>
-
-  <!-- Câu 3 -->
-  <h2>Câu 3: So sánh let, const và var về scope và hoisting</h2>
-  <p>
-    - <strong>var</strong>: phạm vi global hoặc function, hoisting với giá trị mặc định undefined.<br>
-    - <strong>let</strong>: block scope, hoisting nhưng nằm trong Temporal Dead Zone.<br>
-    - <strong>const</strong>: block scope, hoisting nhưng nằm trong Temporal Dead Zone, không gán lại.
-  </p>
-  <p>Ví dụ lỗi thường gặp:</p>
-  <pre><code>
-console.log(a); // undefined (do hoisting var)
+    <!-- Câu 3 -->
+    <h2>Câu 3: So sánh let, const và var về scope và hoisting</h2>
+    <p>
+      - <strong>var</strong>: phạm vi global hoặc function, hoisting với giá trị mặc định undefined.<br>
+      - <strong>let</strong>: block scope, hoisting nhưng nằm trong Temporal Dead Zone.<br>
+      - <strong>const</strong>: block scope, hoisting nhưng nằm trong Temporal Dead Zone, không gán lại.
+    </p>
+    <pre><code>console.log(a); // undefined
 var a = 5;
 
-console.log(b); // ReferenceError (Temporal Dead Zone)
+console.log(b); // ReferenceError
 let b = 10;
 
-console.log(c); // ReferenceError (Temporal Dead Zone)
-const c = 15;
-  </code></pre>
-  <p>
-    Với <strong>var</strong>, biến được hoisting nên có thể gọi trước khi khai báo, nhưng giá trị là undefined.<br>
-    Với <strong>let</strong> và <strong>const</strong>, biến cũng được hoisting nhưng chưa thể truy cập trước khi khai báo → gây lỗi ReferenceError.
-  </p>
-  <p>
-    Cách debug bằng Chrome DevTools:<br>
-    - Mở DevTools: Nhấn F12 hoặc Ctrl+Shift+I trong Chrome.<br>
-    - Console tab: Chạy code để xem lỗi trực tiếp (ReferenceError, undefined).<br>
-    - Sources tab: Đặt breakpoint tại dòng khai báo biến để quan sát giá trị trước và sau khi khởi tạo.<br>
-    - Scope panel: Kiểm tra biến trong block scope, function scope, và global scope.<br>
-    - Watch expressions: Thêm biến vào watch để theo dõi giá trị khi chạy từng bước.
-  </p>
+console.log(c); // ReferenceError
+const c = 15;</code></pre>
 
-  <!-- Câu 4 -->
-<h2>Câu 4: Khái niệm Event Delegation trong JavaScript</h2>
-
-<p>
-  Event Delegation là kỹ thuật trong JavaScript cho phép gắn một listener sự kiện vào phần tử cha, thay vì gắn trực tiếp vào từng phần tử con.
-</p>
-
-<p>
-  Khi sự kiện xảy ra, nó sẽ “bong bóng” (bubble) lên cha, và bạn có thể kiểm tra <code>event.target</code> để biết phần tử nào được click.
-</p>
-
-<p>
-  Điều này đặc biệt hữu ích khi làm việc với danh sách động (dynamic list), vì không cần gắn lại sự kiện mỗi khi thêm phần tử mới.
-</p>
-
-<p>Ví dụ ứng dụng với danh sách động:</p>
-<pre><code>
-&lt;ul id="product-list"&gt;
-  &lt;li&gt;Sản phẩm A&lt;/li&gt;
-  &lt;li&gt;Sản phẩm B&lt;/li&gt;
-&lt;/ul&gt;
-
-const list = document.getElementById('product-list');
+    <!-- Câu 4 -->
+    <h2>Câu 4: Khái niệm Event Delegation trong JavaScript</h2>
+    <p>
+      Event Delegation là kỹ thuật trong JavaScript cho phép gắn một listener sự kiện vào phần tử cha, thay vì gắn trực tiếp vào từng phần tử con.
+    </p>
+    <pre><code>const list = document.getElementById('product-list');
 list.addEventListener('click', function(event) {
   if (event.target.tagName === 'LI') {
     alert('Bạn đã chọn: ' + event.target.textContent);
   }
-});
+});</code></pre>
+  </div>
 
-// Thêm phần tử mới động
-const newItem = document.createElement('li');
-newItem.textContent = 'Sản phẩm C';
-list.appendChild(newItem);
-</code></pre>
-
-<p>
-  Ở đây, không cần gắn sự kiện cho <em>Sản phẩm C</em> vì listener ở cha (<code>&lt;ul&gt;</code>) sẽ tự xử lý.
-</p>
-
-<p>
-  <strong>Lợi ích:</strong><br>
-  - Giảm số lượng listener, tăng hiệu suất.<br>
-  - Tương thích responsive khi thêm phần tử mới.<br>
-  - Tối ưu UI/UX với CSS.<br>
-  - Dễ bảo trì, code gọn gàng.
-</p>
+  <footer>
+    &copy; 2026 - Trang chính 710
+  </footer>
+</body>
+</html>

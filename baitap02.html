@@ -4,15 +4,79 @@
   <meta charset="UTF-8">
   <title>Bài tập 2 - Form đăng ký</title>
   <style>
-    .form-container { max-width: 400px; margin: auto; }
-    input, button { width: 100%; margin: 10px 0; padding: 8px; }
-    .success { color: green; font-weight: bold; }
-    .error { color: red; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafc; /* nền sáng nhẹ */
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #4CAF50; /* xanh lá đồng bộ */
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .form-container {
+      max-width: 400px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    input, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+      font-size: 14px;
+      color: #555;
+    }
+    .success {
+      color: #4CAF50;
+      font-weight: bold;
+      text-align: center;
+    }
+    .error {
+      color: #d9534f;
+      text-align: center;
+    }
+    footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #555;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Form đăng ký</h1>
+  </header>
+
   <div class="form-container">
-    <h1>Đăng ký người dùng</h1>
     <form id="registerForm">
       <input type="text" id="name" placeholder="Tên" required>
       <input type="email" id="email" placeholder="Email" required>
@@ -22,6 +86,10 @@
     </form>
     <p id="message"></p>
   </div>
+
+  <footer>
+    &copy; 2026 - Trang chính 710
+  </footer>
 
   <script>
     const form = document.getElementById("registerForm");
@@ -34,30 +102,12 @@
       const password = document.getElementById("password").value;
       const terms = document.getElementById("terms").checked;
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$/;
 
       if (!emailRegex.test(email)) {
         message.textContent = "Email không hợp lệ!";
         message.className = "error";
         return;
       }
-      if (!passRegex.test(password)) {
-        message.textContent = "Mật khẩu phải ≥8 ký tự, có hoa/thường/số!";
-        message.className = "error";
-        return;
-      }
-      if (!terms) {
-        message.textContent = "Bạn phải đồng ý điều khoản!";
-        message.className = "error";
-        return;
-      }
-
-      const user = { name, email };
-      localStorage.setItem("user", JSON.stringify(user));
-      message.textContent = "Đăng ký thành công!";
-      message.className = "success";
-    });
-  </script>
-</body>
-</html>
+      if (!passRegex.test
