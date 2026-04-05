@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài tập 1 - Danh sách sản phẩm</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .container { max-width: 800px; margin: auto; }
+    .search-box { margin: 20px 0; }
+    .products { display: flex; flex-wrap: wrap; gap: 20px; }
+    .product { border: 1px solid #ccc; padding: 10px; flex: 1 1 150px; text-align: center; }
+    .error { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Danh sách sản phẩm</h1>
+    <input type="text" id="search" class="search-box" placeholder="Tìm sản phẩm...">
+    <div id="product-list" class="products"></div>
+    <p id="error" class="error"></p>
+  </div>
+
+  <script>
+    const products = ["Laptop Dell", "iPhone 15", "Samsung Galaxy", "Tai nghe Sony", "Chuột Logitech"];
+    const productList = document.getElementById("product-list");
+    const errorMsg = document.getElementById("error");
+
+    function renderProducts(list) {
+      productList.innerHTML = "";
+      list.forEach(p => {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.textContent = p;
+        productList.appendChild(div);
+      });
+    }
+
+    renderProducts(products);
+
+    document.getElementById("search").addEventListener("keyup", function() {
+      const keyword = this.value.toLowerCase().trim();
+      const filtered = products.filter(p => p.toLowerCase().includes(keyword));
+      if (filtered.length > 0) {
+        renderProducts(filtered);
+        errorMsg.textContent = "";
+      } else {
+        productList.innerHTML = "";
+        errorMsg.textContent = "Không tìm thấy sản phẩm!";
+      }
+    });
+  </script>
+</body>
+</html>

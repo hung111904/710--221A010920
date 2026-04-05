@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài tập 2 - Form đăng ký</title>
+  <style>
+    .form-container { max-width: 400px; margin: auto; }
+    input, button { width: 100%; margin: 10px 0; padding: 8px; }
+    .success { color: green; font-weight: bold; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Đăng ký người dùng</h1>
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Tên" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Mật khẩu" required>
+      <label><input type="checkbox" id="terms"> Đồng ý điều khoản</label>
+      <button type="submit">Đăng ký</button>
+    </form>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const form = document.getElementById("registerForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const terms = document.getElementById("terms").checked;
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+      if (!emailRegex.test(email)) {
+        message.textContent = "Email không hợp lệ!";
+        message.className = "error";
+        return;
+      }
+      if (!passRegex.test(password)) {
+        message.textContent = "Mật khẩu phải ≥8 ký tự, có hoa/thường/số!";
+        message.className = "error";
+        return;
+      }
+      if (!terms) {
+        message.textContent = "Bạn phải đồng ý điều khoản!";
+        message.className = "error";
+        return;
+      }
+
+      const user = { name, email };
+      localStorage.setItem("user", JSON.stringify(user));
+      message.textContent = "Đăng ký thành công!";
+      message.className = "success";
+    });
+  </script>
+</body>
+</html>

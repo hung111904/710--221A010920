@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bài tập 3 - Countdown Timer</title>
+  <style>
+    .timer { font-size: 2em; text-align: center; margin-top: 50px; }
+    .warning { color: red; animation: blink 1s infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+    .modal-content { background: white; padding: 20px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <div class="timer" id="timer">10:00</div>
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2>Hết giờ!</h2>
+    </div>
+  </div>
+
+  <script>
+    let timeLeft = 600; // 10 phút
+    const timerEl = document.getElementById("timer");
+    const modal = document.getElementById("modal");
+
+    const interval = setInterval(() => {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerEl.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+
+      if (timeLeft <= 60) {
+        timerEl.classList.add("warning");
+      }
+
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        modal.style.display = "flex";
+      }
+      timeLeft--;
+    }, 1000);
+  </script>
+</body>
+</html>
